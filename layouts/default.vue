@@ -1,28 +1,114 @@
 <template>
   <v-app dark>
     <v-toolbar app>
-      <v-toolbar-title>Webradio</v-toolbar-title>
+      <nuxt-link 
+        to="/" 
+        style="line-height: 0">
+        <img
+          src="@/static/logo.png"
+          width="42px"
+        >
+      </nuxt-link>
+      <v-toolbar-title>
+        Voicer
+      </v-toolbar-title>
+      <v-spacer/>
+      <v-toolbar-items class="hidden-xs-only">
+        <v-btn 
+          flat 
+          to="/">Accueil</v-btn>
+        <v-btn 
+          flat 
+          to="/podcasts">Voices</v-btn>
+        <v-btn 
+          flat 
+          to="/radios">Ondes</v-btn>
+      </v-toolbar-items>
+      <v-btn 
+        :ripple="false" 
+        :hover="false"
+        icon
+        color="transparent"
+        to="/search">
+        <v-icon>search</v-icon>
+      </v-btn>
+      <v-spacer/>
+      <v-btn 
+        v-if="!auth"
+        color="transparent"
+        outline
+        large
+        icon
+        to="/login">
+        <v-icon 
+          large 
+          color="primary">account_circle</v-icon>
+      </v-btn>
+      <v-menu 
+        v-else
+        bottom 
+        left>
+        <v-btn 
+          slot="activator"
+          color="transparent"
+          outline
+          large
+          icon>
+          <v-icon 
+            large 
+            color="primary">more_vert</v-icon>
+        </v-btn>
+        <w-toolbar-menu
+          :username="username"
+        />
+      </v-menu>
     </v-toolbar>
-    <v-content>
-      <v-container 
-        fluid 
-        grid-list-lg>
-        <nuxt/>
-      </v-container>
+    <v-content class="pb-5">
+      <nuxt/>
+      <w-player/>
     </v-content>
+    <w-bottom-nav/>
     <v-footer 
       class="hidden-xs-only">
-      © 2018
-      <nuxt-link to="/policies">Mentions légales</nuxt-link>
+      Made with ♥	by Mediameeting
     </v-footer>
   </v-app>
 </template>
 
+<script>
+import userData from '@/mixins/userData'
+
+import WBottomNav from '@/components/WBottomNav'
+import WToolbarMenu from '@/components/WToolbarMenu'
+import WPlayer from '@/components/WPlayer'
+
+export default {
+  components: {
+    WBottomNav,
+    WToolbarMenu,
+    WPlayer
+  },
+  
+  mixins: [
+    userData
+  ],
+}
+</script>
+
+
 <style lang="scss" scoped>
-  .v-footer {
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+.v-toolbar {
+  z-index: 5
+}
+.v-footer {
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 </style>

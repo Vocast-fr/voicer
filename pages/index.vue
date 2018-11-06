@@ -1,24 +1,39 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex>
-        <w-card
-          :podcasts="podcasts"
-        />
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <div>
+    <w-banner/>
+    <v-container 
+      fill-height 
+      grid-list-lg>
+      <v-layout 
+        row 
+        wrap>
+        <v-flex>
+          <h2>Podcasts à la une</h2>
+        </v-flex>
+        <v-flex>
+          <w-podcast
+            :podcasts="podcasts"
+          />
+        </v-flex>
+
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 
-import WCard from '@/components/WCard'
+import WPodcast from '@/components/WPodcast'
+import WBanner from '@/components/WBanner'
 
 export default {
   components: {
-    WCard,
+    WPodcast,
+    WBanner
   },
+
+  transition: 'page',
 
   computed: {
     ...mapState({

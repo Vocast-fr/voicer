@@ -17,19 +17,19 @@
           />
           <v-btn
             absolute
-            dark
             fab
             bottom
             right
             color="primary"
+            @click.native="handleClick"
           >
             <v-icon>play_arrow</v-icon>
           </v-btn>
         </div>
-        <v-card-title>
+        <v-card-title primary-title>
           <div>
             <h3>{{ podcast.title }}</h3>
-            <small> {{ formatDate(podcast.createdAt) }} </small>
+            <small> Publié le {{ formatDate(podcast.createdAt) }} </small>
           </div>
         </v-card-title>
         <v-card-text>
@@ -52,6 +52,12 @@ export default {
     podcasts: {
       type: Array,
       default: undefined
+    }
+  },
+
+  methods: {
+    handleClick () {
+      this.$store.commit('activatePlayer')
     }
   }
 }

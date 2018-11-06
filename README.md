@@ -1,4 +1,4 @@
-# webradio
+# Voicer
 
 > My impeccable Nuxt.js project
 

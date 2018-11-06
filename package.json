@@ -1,5 +1,5 @@
 {
-  "name": "webradio",
+  "name": "voicer",
   "version": "1.0.0",
   "description": "My impeccable Nuxt.js project",
   "author": "",
@@ -19,6 +19,7 @@
     "moment": "^2.22.2",
     "node-sass": "^4.10.0",
     "nuxt": "^2.0.0",
+    "nuxt-edge": "^2.3.0-25689543.1a154e8",
     "sass-loader": "^7.1.0",
     "vuetify": "^1.2.4"
   },
