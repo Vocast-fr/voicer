@@ -19,10 +19,10 @@
           to="/">Accueil</v-btn>
         <v-btn 
           flat 
-          to="/podcasts">Voices</v-btn>
+          to="/voices">Voices</v-btn>
         <v-btn 
           flat 
-          to="/radios">Ondes</v-btn>
+          to="/live">Ondes</v-btn>
       </v-toolbar-items>
       <v-btn 
         :ripple="false" 
@@ -59,12 +59,12 @@
             color="primary">more_vert</v-icon>
         </v-btn>
         <w-toolbar-menu
-          :username="username"
+          :user="user"
         />
       </v-menu>
     </v-toolbar>
     <v-content class="mb-2 pb-5">
-      <nuxt/>
+      <nuxt :user="user"/>
       <w-player/>
     </v-content>
     <w-bottom-nav/>
@@ -76,11 +76,11 @@
 </template>
 
 <script>
-import userData from '@/mixins/userData'
-
 import WBottomNav from '@/components/WBottomNav'
 import WToolbarMenu from '@/components/WToolbarMenu'
 import WPlayer from '@/components/WPlayer'
+
+import userData from '@/mixins/userData'
 
 export default {
   components: {
@@ -88,10 +88,10 @@ export default {
     WToolbarMenu,
     WPlayer
   },
-  
+
   mixins: [
     userData
-  ],
+  ]
 }
 </script>
 

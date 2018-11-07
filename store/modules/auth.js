@@ -20,7 +20,7 @@ export default {
           email: formData.email,
           password: formData.password
         })
-        commit('connectUser', response) 
+        await commit('connectUser', response) 
         this.$router.push('/')
       } catch (error) {
         console.log('An error occurred:', error);
@@ -34,7 +34,7 @@ export default {
           identifier: formData.identifier,
           password: formData.password
         })
-        commit('connectUser', response)
+        await commit('connectUser', response)
         this.$router.push('/')
       } catch (error) {
         console.log('An error occurred:', error);
@@ -43,7 +43,6 @@ export default {
     
     logOut ({ commit }) {
       commit('disconnectUser')
-      localStorage.clear()
       this.$router.push('/')
     }
   },
@@ -63,6 +62,7 @@ export default {
       state.token = null
       state.user = null
       state.isAuthenticated = false
+      localStorage.clear()
     },
   }
 }

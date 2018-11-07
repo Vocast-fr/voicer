@@ -32,9 +32,10 @@
               </v-list-tile-action>
               <v-list-tile-action>
                 <v-btn 
-                  icon 
-                  @click.native="handleControl">
-                  <v-icon>pause</v-icon>
+                  icon
+                  @click.native="handleControl(item)">
+                  <v-icon v-if="!audio.isPlaying || audio.isLoading">play_arrow</v-icon>
+                  <v-icon v-else>pause</v-icon>
                 </v-btn>
               </v-list-tile-action>
               <v-list-tile-action>
@@ -81,8 +82,9 @@ export default {
   },
 
   methods: {
-    handleControl () {
-      this.$store.dispatch('changePlayerStatus')
+    handleControl (item) {
+      this.$store.dispatch('changePlayerStatus', item)
+      this.$store.commit('setPlayLocation', 'player')
     }
   }
 }
@@ -101,23 +103,4 @@ export default {
     bottom: 56px;
   }
 }
-
-.slide-enter-active, .slide-leave-active {
-  animation: slide-in .2s;
-  transition: opacity .2s ease-in-out;
-}
-.slide-enter, .slide-leave-active {
-  animation: slide-out .3s;
-  opacity: 0
-}
-
-@keyframes slide-in {
-  0% { transform: translateY(100%) }
-  100% { transform: translateY(0) }
-}
-@keyframes slide-out {
-  0% { transform: translateY(0) }
-  100% { transform: translateY(10%) }
-}
-
 </style>

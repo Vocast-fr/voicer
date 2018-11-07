@@ -17,13 +17,29 @@
             height="150px"
           />
           <v-btn
+            :loading="isActive(podcast) && isLoading"
             absolute
             fab
             bottom
             right
             color="primary"
             @click.native="handleClick(podcast)">
-            <v-icon large>play_arrow</v-icon>
+            <transition 
+              name="rotate" 
+              mode="out-in">
+              <v-icon 
+                v-if="isActive(podcast) && playLocation === 'card'"
+                key="icon-pause" 
+                large>pause</v-icon>
+              <v-icon 
+                v-else-if="isActive(podcast) && playLocation === 'player'"
+                key="icon-sound"
+                large>volume_up</v-icon>
+              <v-icon 
+                v-else 
+                key="icon-play"
+                large>play_arrow</v-icon>
+            </transition>
           </v-btn>
         </div>
         <v-card-title primary-title>
@@ -53,6 +69,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import formatDate from '@/mixins/formatDate'
 
 export default {
@@ -60,16 +78,25 @@ export default {
     formatDate
   ],
 
-  props: {
-    podcasts: {
-      type: Array,
-      default: () => { return null }
-    }
+  computed: {
+    ...mapState({
+      podcasts: state => state.application.items,
+      isPlaying: state => state.player.audio.isPlaying,
+      isLoading: state => state.player.audio.isLoading,
+      playerItemId: state => state.player.item.id,
+      playLocation: state => state.player.playLocation,
+    })
   },
 
   methods: {
-    handleClick (item) {
+    async handleClick (item) {
+      await this.$store.dispatch('changePlayerStatus', item)
       this.$store.dispatch('selectPlayerItem', item)
+      this.$store.commit('setPlayLocation', 'card')
+    },
+
+    isActive: function (podcast) {
+      return this.isPlaying && podcast.id === this.playerItemId ? true : false
     }
   }
 }

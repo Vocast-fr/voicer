@@ -38,14 +38,32 @@ export default {
         try {
           await this.$refs.player.load()
           this.$refs.player.play()
-        } catch(err) {
-          console.error(err)
+        } catch (error) {
+          console.log('An error has occuried:', error)
         }
       // Else we just load the audio content, making it ready to play
       } else {
         this.$refs.player.load()
       }
     },
+  },
+
+  mounted () {
+    const media = this.$refs.player
+    media.addEventListener('loadstart', () => {
+      this.$store.commit('setPlayerLoading', true)
+    })
+    media.addEventListener('loadedmetadata', () => {
+      this.$store.commit('setPlayerLoading', false)
+      // this.$store.commit('setMediaDuration', media.duration)
+    }),
+    media.addEventListener('timeupdate', () => {
+      // this.$store.commit('updateProgress', media.currentTime)
+    }),
+    media.addEventListener('ended', () => {
+      // If we are the last chapter, we stop the media and go back to 0
+      // if (chapter )
+    })
   }
 }
 </script>

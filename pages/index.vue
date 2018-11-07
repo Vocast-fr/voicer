@@ -16,7 +16,7 @@
               <p>Personnalisable, flexible et intuitive, Voicer est la webradio qui rythmera votre quotidien.</p>
             </div>
             <v-btn
-              to="/podcasts"
+              to="/voices"
               class="mx-0"
               color="primary"
               round
@@ -24,24 +24,6 @@
               Essayer
             </v-btn>
           </div>
-        </v-flex>
-        <v-flex xs12>
-          <h3>Dernières publications</h3>
-        </v-flex>
-        <v-flex px-0>
-          <v-btn 
-            to="/publication"
-            outline 
-            large
-            round
-            color="primary">
-            <v-icon left>library_add</v-icon>
-            Publier une Voicy</v-btn>
-        </v-flex>
-        <v-flex xs12>
-          <w-podcast
-            :podcasts="podcasts"
-          />
         </v-flex>
         <!-- <v-flex xs12>
           <h3>Sur les ondes</h3>
@@ -97,15 +79,5 @@ export default {
   },
 
   transition: 'page',
-
-  computed: {
-    ...mapState({
-      podcasts: state => state.application.items
-    })
-  },
-
-  mounted () {
-    this.$store.dispatch('getApplication')
-  }
 }
 </script>

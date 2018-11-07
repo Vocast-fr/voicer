@@ -21,8 +21,8 @@ export default {
   data: () => ({
     buttons: [
       { path: '/', value: 'accueil', title: 'Accueil', icon: 'home' },
-      { path: '/podcasts', value: 'podcasts', title: 'Voices', icon: 'library_music' },
-      { path: '/radios', value: 'radio', title: 'Ondes', icon: 'radio' }
+      { path: '/voices', value: 'podcasts', title: 'Voices', icon: 'library_music' },
+      { path: '/live', value: 'radio', title: 'Ondes', icon: 'radio' }
     ]
   })
 }

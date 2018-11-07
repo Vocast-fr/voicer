@@ -1,19 +1,20 @@
 import { mapState } from 'vuex'
 
-const userData = {
-  computed: {
+export default {
+   computed: {
     ...mapState({
-      permission: state => state.auth.session.user.role.type,
-      username: state => state.auth.session.user.username,
       auth: state => state.auth.isAuthenticated,
+      user: state => state.auth.session.user
     }),
   },
 
   watch: {
-    permission: function (value) {
-      this.permission = value
+    auth: function (value) {
+      this.auth = value
+    },
+
+    user: function (value) {
+      this.user = value
     }
   }
 }
-
-export default userData
