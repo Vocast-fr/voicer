@@ -15,23 +15,22 @@ export default {
   actions: {
     async registerUser ({ commit }, formData) {
       try {
-        let response
-        response = await this.$axios.$post('/auth/local/register', {
+        const response = await this.$axios.$post('/auth/local/register', {
           username: formData.username,
           email: formData.email,
           password: formData.password
         })
-        commit('connectUser', response)   
+        commit('connectUser', response) 
         this.$router.push('/')
       } catch (error) {
         console.log('An error occurred:', error);
       }
     },
 
+    
     async authenticateUser ({ commit }, formData) {
       try {
-        let response
-        response = await this.$axios.$post('/auth/local', {
+        const response = await this.$axios.$post('/auth/local', {
           identifier: formData.identifier,
           password: formData.password
         })
@@ -41,7 +40,7 @@ export default {
         console.log('An error occurred:', error);
       }
     },
-
+    
     logOut ({ commit }) {
       commit('disconnectUser')
       localStorage.clear()

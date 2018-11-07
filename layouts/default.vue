@@ -63,7 +63,7 @@
         />
       </v-menu>
     </v-toolbar>
-    <v-content class="pb-5">
+    <v-content class="mb-2 pb-5">
       <nuxt/>
       <w-player/>
     </v-content>

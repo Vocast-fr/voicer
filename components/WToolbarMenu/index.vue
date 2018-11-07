@@ -13,8 +13,8 @@
 
     <v-list dense>
       <v-list-tile
-        v-for="(option, index) in panel"
-        :key="index"
+        v-for="option in panel"
+        :key="option.value"
         @click="handleClickMenu(option.value)">
         <v-list-tile-content class="text-truncate">
           {{ option.title }}
@@ -27,8 +27,8 @@
       <v-divider/>
 
       <v-list-tile
-        v-for="(option, index) in options"
-        :key="index"
+        v-for="option in options"
+        :key="option.value"
         @click="handleClickMenu(option.value)">
         <v-list-tile-content class="text-truncate">
           {{ option.title }}
