@@ -9,10 +9,10 @@
           <h3>Publier une Voicy</h3>
           <v-spacer/>
           <v-btn 
-            to="/"
-            icon
+            icon 
             small
-            color="transparent">
+            color="transparent"
+            @click="handleUndo">
             <v-icon small>clear</v-icon>
           </v-btn>
         </v-card-title>
@@ -111,6 +111,7 @@ export default {
     handlePublish () {
       if (this.$refs.form.validate()) {
         this.$store.dispatch('submitPodcast', {
+          id: this.$store.publish.id ? this.$store.publish.id : undefined,
           title: this.form.title,
           description: this.form.description,
           audio: this.form.audio,
@@ -118,6 +119,10 @@ export default {
         })
         this.$refs.form.reset()
       }
+    },
+
+    handleUndo () {
+      this.$router.go(-1)
     }
   }
 }

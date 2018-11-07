@@ -28,21 +28,8 @@
 <script>
 import { mapState } from 'vuex'
 
-import WPodcast from '@/components/WPodcast'
-
-
 export default {
   transition: 'page',
   middleware: 'protected',
-
-  components: {
-    WPodcast,
-  },
-
-  computed: {
-    ...mapState({
-      podcasts: state => state.application.items
-    })
-  },
 }
 </script>

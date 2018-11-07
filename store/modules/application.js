@@ -37,17 +37,15 @@ export default {
     //   }
     // },
 
-    // deleteNews ({ dispatch }, newsId) {
-    //   this.$axios.$delete(`/news/${newsId}`)
-    //   .then(response => {
-    //     // Handle success.
-    //     dispatch('getNewsFeed')
-    //   })
-    //   .catch(error => {
-    //     // Handle error.
-    //     console.log('An error occurred:', error)
-    //   })
-    // }
+    async deleteItem ({ dispatch, router }, itemId) {
+      console.log(itemId)
+      try {
+        await this.$axios.$delete(`/podcasts/${itemId}`)
+        dispatch('getApplication')
+      } catch (error) {
+        console.log('An error occurred:', error)
+      }
+    }
   },
 
   mutations: {

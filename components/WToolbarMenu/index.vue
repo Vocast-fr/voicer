@@ -13,7 +13,7 @@
 
     <v-list dense>
 
-      <div v-if="user ? user.role.type === 'root' : true">
+      <div v-if="user ? user.role.type === 'root' : false">
         <v-list-tile
           v-for="option in panel" 
           
@@ -57,8 +57,8 @@ export default {
 
   data: () => ({
     panel: [
-      { title: 'Monitoring', value: 'monitoring', icon: 'build' },
-      { title: 'Analytics', value: 'analysis', icon: 'trending_up' },
+      { title: `Panneau d'administration`, value: 'monitoring', icon: 'build' },
+      { title: 'Statistiques', value: 'analysis', icon: 'trending_up' },
     ],
     options: [
       { title: 'Paramètres du compte', value: 'settings', icon: 'settings' },
@@ -79,6 +79,13 @@ export default {
         case 'logout':
           this.$store.dispatch('logOut')
           break
+        case 'monitoring':
+          this.$router.push('/monitoring')
+          break
+        case 'analysis':
+          this.$router.push('/analytics')
+          break
+        
       }
     }
   }

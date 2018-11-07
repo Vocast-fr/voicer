@@ -67,8 +67,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 import WPodcast from '@/components/WPodcast'
 import WBanner from '@/components/WBanner'
 

@@ -64,7 +64,7 @@
       </v-menu>
     </v-toolbar>
     <v-content class="mb-2 pb-5">
-      <nuxt :user="user"/>
+      <nuxt/>
       <w-player/>
     </v-content>
     <w-bottom-nav/>
@@ -91,7 +91,13 @@ export default {
 
   mixins: [
     userData
-  ]
+  ],
+
+  mounted () {
+    if (this.auth) {
+      this.$store.dispatch('getApplication')
+    }
+  }
 }
 </script>
 

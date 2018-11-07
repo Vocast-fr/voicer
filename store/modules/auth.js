@@ -21,7 +21,7 @@ export default {
           password: formData.password
         })
         await commit('connectUser', response) 
-        this.$router.push('/')
+        this.$router.go()
       } catch (error) {
         console.log('An error occurred:', error);
       }
@@ -35,7 +35,7 @@ export default {
           password: formData.password
         })
         await commit('connectUser', response)
-        this.$router.push('/')
+        this.$router.go()
       } catch (error) {
         console.log('An error occurred:', error);
       }
@@ -43,14 +43,15 @@ export default {
     
     logOut ({ commit }) {
       commit('disconnectUser')
-      this.$router.push('/')
+      this.$router.go()
     }
   },
 
   mutations: {
     connectUser (state, response) {
+      console.log(response)
       state.token = response.jwt
-      state.user = response.user
+      state.session.user = response.user
       state.isAuthenticated = true
 
       this.$axios.setToken(response.jwt, 'Bearer')
@@ -62,7 +63,9 @@ export default {
       state.token = null
       state.user = null
       state.isAuthenticated = false
+
       localStorage.clear()
     },
+    
   }
 }

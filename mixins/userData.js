@@ -6,15 +6,9 @@ export default {
       auth: state => state.auth.isAuthenticated,
       user: state => state.auth.session.user
     }),
-  },
 
-  watch: {
-    auth: function (value) {
-      this.auth = value
-    },
-
-    user: function (value) {
-      this.user = value
+    isAdmin: function () {
+      return this.user ? this.user.role.type === 'root' : false
     }
-  }
+  },
 }

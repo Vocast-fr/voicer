@@ -2,7 +2,7 @@
   <v-container>
     <v-layout>
       <v-flex>
-        <h2>Mentions légales</h2>
+        <h2>Statistiques</h2>
       </v-flex>
     </v-layout>
   </v-container>

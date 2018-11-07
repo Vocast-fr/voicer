@@ -1,47 +1,47 @@
 <template>
   <v-container grid-list-lg>
+    <v-layout v-if="!isAdmin">
+      <v-card>
+        Vous n'avez pas les droits d'accès
+      </v-card>
+    </v-layout>
     <v-layout 
+      v-else
       row 
       wrap>
       <v-flex xs12>
-        <div class="title mb-3">Voices disponibles à l'écoute</div>
+        <div class="title mb-3">Panneau d'administration</div>
         <v-divider class="my-3"/>
         <div class="subheading">
-          <p>Les Voices sont des contenus audio que vous pouvez écouter et réécouter à l'infini. Plusieurs interactions sont possibles comme partager, aimer ou encore télécharger le fichier audio.</p>
+          <p>Dans le panneau d'administration, vous pouvez ajouter, éditer ou supprimer des Voices.</p>
         </div>
       </v-flex>
-      <v-flex xs12>
-        <w-podcast/>
-      </v-flex>
       <v-flex 
-        px-0 
-        text-xs-right>
+        class="px-0" 
+        xs12>
         <v-btn 
-          v-if="isAdmin"
           to="/publication"
-          outline 
-          large
-          round
           color="primary">
           <v-icon left>library_add</v-icon>
-          Publier une Voicy</v-btn>
+          Ajouter une Voicy</v-btn>
+      </v-flex>
+      <v-flex >
+        <w-monitor-list/>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import WPodcast from '@/components/WPodcast'
 import userData from '@/mixins/userData'
+import WMonitorList from '@/components/WMonitorList'
 
 export default {
   transition: 'page',
   middleware: 'protected',
-  
   components: {
-    WPodcast,
+    WMonitorList
   },
-
   mixins: [
     userData
   ],

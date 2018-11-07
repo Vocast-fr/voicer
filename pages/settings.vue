@@ -25,6 +25,9 @@
 import WLayoutCard from '@/components/WLayoutCard'
 
 export default {
+  transition: 'page',
+  middleware: 'protected',
+  
   components: {
     WLayoutCard
   },

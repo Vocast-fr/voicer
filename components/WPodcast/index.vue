@@ -10,11 +10,13 @@
       sm6
       md4
       lg3>
-      <v-card height="100%">
+      <v-card 
+        height="100%" 
+        class="flexcard">
         <div class="relative">
           <v-img
             :src="podcast.linkThumbnail"
-            height="150px"
+            height="180px"
           />
           <v-btn
             :loading="isActive(podcast) && isLoading"
@@ -48,9 +50,27 @@
             <small> Publié le {{ formatDate(podcast.createdAt) }} </small>
           </div>
         </v-card-title>
-        <v-card-text>
+        <v-card-text class="grow">
           <span class="linebreak">{{ podcast.description }}</span>
         </v-card-text>
+        <v-card-actions>
+          <v-spacer/>
+          <v-btn 
+            small 
+            icon>
+            <v-icon small>save_alt</v-icon>
+          </v-btn>
+          <v-btn 
+            small 
+            icon>
+            <v-icon small>share</v-icon>
+          </v-btn>
+          <v-btn 
+            small 
+            icon>
+            <v-icon small>favorite_border</v-icon>
+          </v-btn>
+        </v-card-actions>
       </v-card>
     </v-flex>
   </v-layout>
@@ -108,5 +128,9 @@ export default {
 }
 .relative {
   position: relative
+}
+.flexcard {
+  display: flex;
+  flex-direction: column;
 }
 </style>
