@@ -1,10 +1,12 @@
 function initialState () {
   return {
-    id: undefined,
-    title: '',
-    description: '',
-    linkAudio: '',
-    linkThumbnail: ''
+    item: {
+      id: undefined,
+      title: undefined,
+      description: undefined,
+      linkAudio: undefined,
+      linkThumbnail: undefined
+    }
   }
 }
 
@@ -12,7 +14,8 @@ export default {
   state: initialState(),
 
   actions: {
-    async submitPodcast ({ dispatch }, data) {
+    async submitPodcast ({ dispatch, commit }, data) {
+      let response
       try {
         if (data.id) {
           response = await this.$axios.$put(`/podcasts/${data.id}`, {
@@ -29,9 +32,9 @@ export default {
             linkThumbnail: data.thumbnail
           })
         }
-  
+        
         dispatch('getApplication')
-
+        
         // Force remove state ID to prevent mixed contents
         commit('resetPublicationState')
   
@@ -43,8 +46,8 @@ export default {
   },
 
   mutations: {
-    setPublicationId (state, id) {
-      state.id = id
+    setEditedItem (state, item) {
+      state.item = item
     },
 
     resetPublicationState (state) {
@@ -56,6 +59,6 @@ export default {
   },
 
   getters: {
-
+    getPublicationItem: state => state.item
   }
 }

@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import application from './modules/application'
 import auth from './modules/auth'
 import player from './modules/player'
-import publish from './modules/publish'
+import publication from './modules/publication'
 
 const createStore = () => {
   return new Vuex.Store({
@@ -11,7 +11,7 @@ const createStore = () => {
       application,
       auth,
       player,
-      publish
+      publication
     },
 
     state: {

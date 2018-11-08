@@ -19,14 +19,14 @@
         <v-divider/>
         <v-card-text>
           <v-text-field
-            v-model="form.title"
+            v-model="item.title"
             :rules="form.titleRules"
             label="Titre de la Voicy"
             solo-inverted
             required
           />
           <v-textarea
-            v-model="form.description"
+            v-model="item.description"
             :rules="form.descriptionRules"
             label="Description de la Voicy"
             solo-inverted
@@ -38,7 +38,7 @@
           </label>
           <v-text-field
             id="audio"
-            v-model="form.audio"
+            v-model="item.linkAudio"
             :rules="form.audioRules"
             placeholder="https://mediameeting.streamaudio.mp3"
             prepend-icon="link"
@@ -51,7 +51,7 @@
             <h4 class="ml-5 pb-2">URL de l'image de couverture :</h4>
           </label>
           <v-text-field
-            v-model="form.thumbnail"
+            v-model="item.linkThumbnail"
             :rules="form.thumbnailRules"
             placeholder="https://mediameeting.thumbnail.png"
             prepend-icon="link"
@@ -68,7 +68,7 @@
             color="primary" 
             @click="handlePublish">
             <v-icon left>library_add</v-icon>
-            Publier
+            {{ item.id ? 'Editer' : 'Publier' }}
           </v-btn>
         </v-card-actions>
       </v-form>
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import WLayoutCard from '@/components/WLayoutCard'
 
 export default {
@@ -87,35 +88,37 @@ export default {
   data: () => ({
     form: {
       valid: true,
-      title: '',
       titleRules: [
         v => !!v || 'Vous devez renseigner un titre',
         v => (v && v.length <= 36) || 'Votre titre ne doit pas contenir plus de 36 caractères'
       ],
-      description: '',
       descriptionRules: [
         v => !!v || 'Vous devez écrire quelque chose',
       ],
-      audio: '',
       audioRules: [
         v => !!v || 'Vous devez ajouter un fichier audio',
       ],
-      thumbnail: '',
       thumbnailRules: [
         v => !!v || 'Une image de couverture est demandée',
       ]
     }
   }),
 
+  computed: {
+    ...mapState({
+      item: state => state.publication.item,
+    })
+  },
+
   methods: {
     handlePublish () {
       if (this.$refs.form.validate()) {
         this.$store.dispatch('submitPodcast', {
-          id: this.$store.publish.id ? this.$store.publish.id : undefined,
-          title: this.form.title,
-          description: this.form.description,
-          audio: this.form.audio,
-          thumbnail: this.form.thumbnail
+          id: this.item ? this.item.id : undefined,
+          title: this.item.title,
+          description: this.item.description,
+          audio: this.item.linkAudio,
+          thumbnail: this.item.linkThumbnail
         })
         this.$refs.form.reset()
       }
@@ -123,6 +126,7 @@ export default {
 
     handleUndo () {
       this.$router.go(-1)
+      this.$store.commit('setEditedItem', { })
     }
   }
 }

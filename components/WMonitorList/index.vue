@@ -1,14 +1,15 @@
 <template>
   <v-list 
-    v-if="items" 
-    :three-line="$vuetify.breakpoint.lgAndUp"
+    v-if="items"
+    :three-line="$vuetify.breakpoint.lgAndUp" 
+    class="grey darken-4"
     two-line>
     <v-hover 
       v-for="item in items"
       :key="item.id">
       <v-list-tile 
         slot-scope="{ hover }"
-        :class="{ 'grey darken-2': hover }">
+        :class="{ 'grey darken-3': hover }">
         <v-list-tile-content>
           <v-list-tile-title>
             {{ item.title }}
@@ -50,7 +51,7 @@
             Dernière modification le {{ formatDate(item.updatedAt) }}
           </v-list-tile-action-text>
           <div class="buttons-flex px-1 mb-2">
-            <w-monitor-edit :id="item.id"/>
+            <w-monitor-edit :item="item"/>
             <!-- <w-monitor-status :id="item.id"/> -->
             <w-monitor-delete :id="item.id"/>
           </div>
@@ -94,6 +95,6 @@ export default {
   align-items: center;
 }
 .v-list > :nth-child(2n) {
-    background: #181818;
+  background: #181818;
 }
 </style>

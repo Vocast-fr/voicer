@@ -13,19 +13,6 @@
       <v-flex xs12>
         <w-podcast/>
       </v-flex>
-      <v-flex 
-        px-0 
-        text-xs-right>
-        <v-btn 
-          v-if="isAdmin"
-          to="/publication"
-          outline 
-          large
-          round
-          color="primary">
-          <v-icon left>library_add</v-icon>
-          Publier une Voicy</v-btn>
-      </v-flex>
     </v-layout>
   </v-container>
 </template>

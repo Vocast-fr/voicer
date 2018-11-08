@@ -12,15 +12,15 @@
 <script>
 export default {
   props: {
-    id: {
-      type: String,
+    item: {
+      type: Object,
       default: undefined
     }
   },
 
   methods: {
     handleClick () {
-      this.$store.commit('setPublicationId', this.id)
+      this.$store.commit('setEditedItem', this.item)
       this.$router.push('publication')
     }
   }
