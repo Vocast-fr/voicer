@@ -36,6 +36,19 @@ html {
       color: #fff;
     }
   }
+
+  .flexcard {
+    display: flex;
+    flex-direction: column
+  }
+
+  .relative {
+    position: relative
+  }
+
+  .image-round {
+    border-radius: 50%
+  }
 }
 
 // @keyframes page-in {
@@ -51,7 +64,7 @@ html {
 
 .page-enter-active, .page-leave-active {
   // animation: page-in .3s;
-  transition: opacity .2s;
+  transition: opacity .2s
 }
 .page-enter, .page-leave-active {
   // animation: page-out .3s;
@@ -59,21 +72,21 @@ html {
 }
 
 .slide-enter-active, .slide-leave-active {
-  animation: slide-in .2s;
-  transition: opacity .2s ease-in-out;
+  animation: slide-in .3s;
+  transition: .2s ease-in-out
 }
 .slide-enter, .slide-leave-active {
-  animation: slide-out .3s;
-  opacity: 0
+  animation: slide-out .3s
 }
 
 .rotate-enter-active, .rotate-leave-active {
   animation: rotate-in .2s;
-  transition: opacity .2s ease-in-out;
+  transition: opacity .2s ease-in-out
 }
 .rotate-enter, .rotate-leave-active {
   animation: rotate-out .2s;
-  opacity: 0
+  opacity: 0;
+  transform: translateY(100%)
 }
 
 @keyframes slide-in {
@@ -82,7 +95,7 @@ html {
 }
 @keyframes slide-out {
   0% { transform: translateY(0) }
-  100% { transform: translateY(10%) }
+  100% { transform: translateY(100%) }
 }
 
 @keyframes rotate-in {

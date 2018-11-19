@@ -54,7 +54,6 @@ export default {
 
   methods: {
     handleDelete (id) {
-      console.log('ici')
       this.$store.dispatch('deleteItem', id)
       this.dialog = false
     }

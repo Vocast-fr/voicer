@@ -6,7 +6,7 @@
         v-model="form.valid" 
         lazy-validation>
         <v-card-title>
-          <h3>Publier une Voicy</h3>
+          <h3>{{ item.id ? 'Editer une Voicy' : 'Publier une Voicy' }}</h3>
           <v-spacer/>
           <v-btn 
             icon 
@@ -63,6 +63,8 @@
         <v-card-actions>
           <v-spacer/>
           <v-btn 
+            :loading="isLoading"
+            :disabled="isLoading"
             round
             large
             color="primary" 
@@ -106,6 +108,7 @@ export default {
 
   computed: {
     ...mapState({
+      isLoading: state => state.publication.isLoading,
       item: state => state.publication.item,
     })
   },

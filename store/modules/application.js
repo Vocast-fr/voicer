@@ -1,6 +1,7 @@
 export default {
   state: {
     items: [],
+    waves: []
   },
 
   actions: {
@@ -12,6 +13,19 @@ export default {
           }
         })
         commit('setApplication', data)
+      } catch (err) {
+        console.error(err)
+      }
+    },
+
+    async getWaves ({ commit }) {
+      try {
+        const data = await this.$axios.$get('/lives', {
+          params: {
+            _sort: 'createdAt:desc' // Generates http://localhost:1337/posts?_sort=createdAt:desc
+          }
+        })
+        commit('setWaves', data)
       } catch (err) {
         console.error(err)
       }
@@ -38,7 +52,6 @@ export default {
     // },
 
     async deleteItem ({ dispatch, router }, itemId) {
-      console.log(itemId)
       try {
         await this.$axios.$delete(`/podcasts/${itemId}`)
         dispatch('getApplication')
@@ -51,6 +64,10 @@ export default {
   mutations: {
     setApplication (state, data) {
       state.items = data
+    },
+
+    setWaves (state, data) {
+      state.waves = data
     }
   },
 

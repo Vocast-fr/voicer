@@ -58,7 +58,7 @@ export default {
       // this.$store.commit('setMediaDuration', media.duration)
     }),
     media.addEventListener('timeupdate', () => {
-      // this.$store.commit('updateProgress', media.currentTime)
+      this.$store.commit('updatePlayerCurrentTime', media.currentTime)
     }),
     media.addEventListener('ended', () => {
       // If we are the last chapter, we stop the media and go back to 0

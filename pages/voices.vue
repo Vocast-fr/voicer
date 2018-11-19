@@ -3,7 +3,9 @@
     <v-layout 
       row 
       wrap>
-      <v-flex xs12>
+      <v-flex 
+        xs12 
+        class="my-5">
         <div class="title mb-3">Voices disponibles à l'écoute</div>
         <v-divider class="my-3"/>
         <div class="subheading">
@@ -11,14 +13,14 @@
         </div>
       </v-flex>
       <v-flex xs12>
-        <w-podcast/>
+        <w-voicy/>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import WPodcast from '@/components/WPodcast'
+import WVoicy from '@/components/WVoicy'
 import userData from '@/mixins/userData'
 
 export default {
@@ -26,7 +28,7 @@ export default {
   middleware: 'protected',
   
   components: {
-    WPodcast,
+    WVoicy,
   },
 
   mixins: [

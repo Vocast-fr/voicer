@@ -36,7 +36,7 @@
             Caster un live</v-btn>
         </v-flex>
         <v-flex xs12>
-          <w-podcast
+          <w-voicy
             :podcasts="podcasts"
           />
         </v-flex> -->
@@ -53,9 +53,10 @@
               text-xs-center>
               <a 
                 target="_blank" 
-                href="https://www.mediameeting.fr/">
+                href="https://twitter.com/TakCastel">
                 <img
-                  src="@/assets/img/logo-mediameeting.png"
+                  class="image-round"
+                  src="@/assets/img/takcastel.jpg"
                   width="100px">
               </a>
             </v-flex>
@@ -67,12 +68,12 @@
 </template>
 
 <script>
-import WPodcast from '@/components/WPodcast'
+import WVoicy from '@/components/WVoicy'
 import WBanner from '@/components/WBanner'
 
 export default {
   components: {
-    WPodcast,
+    WVoicy,
     WBanner
   },
 

@@ -47,10 +47,28 @@ export default {
 
     setPlayerItem (state, item) {
       state.item = item
+    },
+
+    updatePlayerCurrentTime (state, value) {
+      state.audio.currentTime = value
     }
   },
 
   getters: {
-
+    getPlayerChapters: state => {
+      if (state.item.chapters) {
+        const chapters = [...state.item.chapters]
+        chapters.sort((bip, boop) => {
+          if (bip[state.position] > boop[state.position]) {
+            return 1
+          }
+          if(bip[state.position] < boop[state.position]) {
+            return -1
+          }
+          return 0
+        })
+        return chapters
+      }
+    }
   }
 }

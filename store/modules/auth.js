@@ -49,7 +49,6 @@ export default {
 
   mutations: {
     connectUser (state, response) {
-      console.log(response)
       state.token = response.jwt
       state.session.user = response.user
       state.isAuthenticated = true

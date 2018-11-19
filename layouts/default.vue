@@ -22,16 +22,9 @@
           to="/voices">Voices</v-btn>
         <v-btn 
           flat 
-          to="/live">Ondes</v-btn>
+          to="/waves">Waves</v-btn>
       </v-toolbar-items>
-      <v-btn 
-        :ripple="false" 
-        :hover="false"
-        icon
-        color="transparent"
-        to="/search">
-        <v-icon>search</v-icon>
-      </v-btn>
+      <w-search-menu/>
       <v-spacer/>
       <v-btn 
         v-if="!auth"
@@ -44,24 +37,11 @@
           large 
           color="primary">account_circle</v-icon>
       </v-btn>
-      <v-menu 
+      
+      <w-toolbar-menu 
         v-else
-        bottom 
-        left>
-        <v-btn 
-          slot="activator"
-          color="transparent"
-          outline
-          large
-          icon>
-          <v-icon 
-            large 
-            color="primary">more_vert</v-icon>
-        </v-btn>
-        <w-toolbar-menu
-          :user="user"
-        />
-      </v-menu>
+        :user="user"/>
+      
     </v-toolbar>
     <v-content class="mb-2 pb-5">
       <nuxt/>
@@ -70,13 +50,14 @@
     <w-bottom-nav/>
     <v-footer 
       class="hidden-xs-only">
-      Made with ♥	by Mediameeting
+      Made with ♥	by TakCastel
     </v-footer>
   </v-app>
 </template>
 
 <script>
 import WBottomNav from '@/components/WBottomNav'
+import WSearchMenu from '@/components/WSearchMenu'
 import WToolbarMenu from '@/components/WToolbarMenu'
 import WPlayer from '@/components/WPlayer'
 
@@ -85,6 +66,7 @@ import userData from '@/mixins/userData'
 export default {
   components: {
     WBottomNav,
+    WSearchMenu,
     WToolbarMenu,
     WPlayer
   },
@@ -96,6 +78,7 @@ export default {
   mounted () {
     if (this.auth) {
       this.$store.dispatch('getApplication')
+      this.$store.dispatch('getWaves')
     }
   }
 }

@@ -9,11 +9,13 @@
       v-else
       row 
       wrap>
-      <v-flex xs12>
-        <div class="title mb-3">Panneau d'administration</div>
+      <v-flex 
+        xs12 
+        class="my-5">
+        <h3 class="title mb-3">Panneau d'administration</h3>
         <v-divider class="my-3"/>
         <div class="subheading">
-          <p>Dans le panneau d'administration, vous pouvez ajouter, éditer ou supprimer des Voices.</p>
+          <p>En tant que responsable de la page, vous pouvez ajouter, éditer ou supprimer des contenus.</p>
         </div>
       </v-flex>
       <v-flex 
@@ -24,6 +26,12 @@
           color="primary">
           <v-icon left>library_add</v-icon>
           Ajouter une Voicy</v-btn>
+        <v-btn 
+          to="/publication"
+          outline
+          color="primary">
+          <v-icon left>fiber_manual_record</v-icon>
+          Radio diffusion</v-btn>
       </v-flex>
       <v-flex >
         <w-monitor-list/>

@@ -1,5 +1,6 @@
 function initialState () {
   return {
+    isLoading: false,
     item: {
       id: undefined,
       title: undefined,
@@ -16,6 +17,9 @@ export default {
   actions: {
     async submitPodcast ({ dispatch, commit }, data) {
       let response
+
+      commit('setPublicationLoading', true)
+
       try {
         if (data.id) {
           response = await this.$axios.$put(`/podcasts/${data.id}`, {
@@ -48,6 +52,10 @@ export default {
   mutations: {
     setEditedItem (state, item) {
       state.item = item
+    },
+
+    setPublicationLoading (state, status) {
+      state.isLoading = status
     },
 
     resetPublicationState (state) {

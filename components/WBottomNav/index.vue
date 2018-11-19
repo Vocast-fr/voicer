@@ -22,7 +22,7 @@ export default {
     buttons: [
       { path: '/', value: 'accueil', title: 'Accueil', icon: 'home' },
       { path: '/voices', value: 'podcasts', title: 'Voices', icon: 'library_music' },
-      { path: '/live', value: 'radio', title: 'Ondes', icon: 'radio' }
+      { path: '/waves', value: 'radio', title: 'Waves', icon: 'radio' }
     ]
   })
 }

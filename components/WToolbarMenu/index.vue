@@ -1,49 +1,77 @@
 <template>
-  <div>
-    <v-toolbar>
-      <!-- <v-avatar
+  <v-menu 
+    min-width="300"
+    attach
+    left
+    offset-y>
+
+    <!-- Launch button -->
+    <v-btn 
+      slot="activator"
+      color="transparent"
+      outline
+      large
+      icon>
+      <v-avatar
+        size="35"
+        color="grey darken-3">
+        <img 
+          src="/apple-touch-icon-180x180.png" 
+          alt="avatar">
+      </v-avatar>
+    </v-btn>
+    
+    <v-toolbar 
+      prominent 
+      class="grey darken-3 grey--text text--lighten-3">
+      <v-avatar
         size="42"
         color="grey darken-3">
         <img 
           src="/apple-touch-icon-180x180.png" 
           alt="avatar">
-      </v-avatar> -->
-      <span>Connecté en tant que {{ user.username }}</span>
+      </v-avatar>
+      <div class="ml-3">
+        <span class="title d-block">{{ user.username }}</span>
+        <span class="caption">{{ user.email }}</span>
+      </div>
     </v-toolbar>
 
-    <v-list dense>
+    <v-list 
+      dense 
+      class="grey darken-4">
 
       <div v-if="user ? user.role.type === 'root' : false">
         <v-list-tile
           v-for="option in panel" 
-          
           :key="option.value"
+          class="grey darken-4 grey--text text--lighten-2"
           @click="handleClickMenu(option.value)">
           <v-list-tile-content class="text-truncate">
             {{ option.title }}
           </v-list-tile-content>
           <v-list-tile-action>
-            <v-icon>{{ option.icon }}</v-icon>
+            <v-icon color="grey">{{ option.icon }}</v-icon>
           </v-list-tile-action>
         </v-list-tile>
+        <v-divider/>
       </div>
 
-      <v-divider/>
-
-      <v-list-tile
+      <v-list-tile 
         v-for="option in options"
         :key="option.value"
+        class="grey darken-4 grey--text text--lighten-2"
         @click="handleClickMenu(option.value)">
         <v-list-tile-content class="text-truncate">
           {{ option.title }}
         </v-list-tile-content>
         <v-list-tile-action>
-          <v-icon>{{ option.icon }}</v-icon>
+          <v-icon color="grey">{{ option.icon }}</v-icon>
         </v-list-tile-action>
       </v-list-tile>
     </v-list>
 
-  </div>
+  </v-menu>
 </template>
 
 <script>

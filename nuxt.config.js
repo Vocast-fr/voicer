@@ -45,14 +45,24 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    // Doc : https://pwa.nuxtjs.org/setup
+    '@nuxtjs/pwa',
   ],
   /*
+
   ** Axios module configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     baseURL: 'http://localhost:1337/'
+  },
+
+  /*
+  ** Workbox modules for PWA
+  */
+  workbox: {
+    // options here
   },
 
   /*
