@@ -9,11 +9,11 @@
         wrap>
         <v-flex xs12>
           <div class="my-5">
-            <div class="title mb-3">Voicer, qu'est ce que c'est ?</div>
+            <div class="title mb-3">Webradio, qu'est ce que c'est ?</div>
             <v-divider class="my-3"/>
             <div class="subheading">
-              <p>Voicer, à prononcer à l'anglaise « Voyceur » est une application de diffusion de contenu audio pour améliorer la communication interne au sein d'un groupe privé.</p>
-              <p>Personnalisable, flexible et intuitive, Voicer est la webradio qui rythmera votre quotidien.</p>
+              <p>Webradio est une application de diffusion de contenu audio pour améliorer la communication interne au sein d'un groupe privé.</p>
+              <p>Personnalisable, flexible et intuitive, Webradio est la radio qui rythmera votre quotidien.</p>
             </div>
             <v-btn
               to="/voices"

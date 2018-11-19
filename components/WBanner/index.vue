@@ -6,8 +6,8 @@
       align-center
       column
       justify-center>
-      <h1 class="primary--text mb-3 lobster">Voicer</h1>
-      <h2 class="subheading text-xs-center">Votre plateforme de Voice Business</h2>
+      <h1 class="primary--text mb-3 lobster">Webradio</h1>
+      <h2 class="subheading text-xs-center">Votre plateforme de Web Radio</h2>
     </v-layout>
   </v-parallax>
 </template>
