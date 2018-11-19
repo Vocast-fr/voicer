@@ -1,4 +1,4 @@
-# Webradio
+# Vocast PWA
 
 > My impeccable Nuxt.js project
 

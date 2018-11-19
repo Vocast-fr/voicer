@@ -10,7 +10,7 @@
         >
       </nuxt-link>
       <v-toolbar-title>
-        Webradio
+        VocastPWA
       </v-toolbar-title>
       <v-spacer/>
       <v-toolbar-items class="hidden-xs-only">

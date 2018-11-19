@@ -9,7 +9,7 @@
         <div class="title mb-3">Ecouter les Waves</div>
         <v-divider class="my-3"/>
         <div class="subheading">
-          <p>L'application Webradio vous donne la possibilité d'écouter des streams audios diffusés 24h / 24.</p>
+          <p>L'application Vocast vous donne la possibilité d'écouter des streams audios diffusés 24h / 24.</p>
         </div>
       </v-flex>
       <w-wavy/>

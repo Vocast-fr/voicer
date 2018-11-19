@@ -9,7 +9,7 @@
         wrap>
         <v-flex xs12>
           <div class="my-5">
-            <div class="title mb-3">Webradio, qu'est ce que c'est ?</div>
+            <div class="title mb-3">VocastPWA, qu'est ce que c'est ?</div>
             <v-divider class="my-3"/>
             <div class="subheading">
               <p>Vocast est une plateforme de diffusion de podcast destinée aux producteurs amateurs de contenus audios.</p>
