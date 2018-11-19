@@ -12,8 +12,8 @@
             <div class="title mb-3">Webradio, qu'est ce que c'est ?</div>
             <v-divider class="my-3"/>
             <div class="subheading">
-              <p>Webradio est une application de diffusion de contenu audio pour améliorer la communication interne au sein d'un groupe privé.</p>
-              <p>Personnalisable, flexible et intuitive, Webradio est la radio qui rythmera votre quotidien.</p>
+              <p>Vocast est une plateforme de diffusion de podcast destinée aux producteurs amateurs de contenus audios.</p>
+              <p>Conçue par les podcasteurs et pour les podcasteurs, elle réunie technologie moderne et simplicité.</p>
             </div>
             <v-btn
               to="/voices"
